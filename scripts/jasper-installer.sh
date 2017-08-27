@@ -16,15 +16,14 @@ Defaults () {
 	echo "$(date) - Start jasper-installer script." >> ~/jasper-installer.log
 	echo "$(date) - Update raspbian..." >> ~/jasper-installer.log
 	# Update raspbian
-	sudo apt-get update
-	sudo apt-get upgrade --yes
+	sudo apt-get update && sudo apt-get upgrade --yes
 
 	echo "$(date) - Append PATH var and export LD_LIBRARY_PATH..." >> ~/jasper-installer.log
 	# Append PATH var and export LD_LIBRARY_PATH
-	cat <<EOT >> /home/pi/.bashrc
-export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
-PATH=$PATH:/usr/local/lib/
-export PATH
+	cat <<EOT >> /home/$USERNAME/.zshrc
+		export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
+		PATH=$PATH:/usr/local/lib/
+		export PATH
 EOT
 }
 
